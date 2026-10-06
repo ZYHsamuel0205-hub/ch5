@@ -12,29 +12,38 @@ public class GuessMyNumber {
        	System.out.println ("I'm thinking of a number between 1 and 100. Can you guess what it is?");
         System.out.print ("Type a number: ");
 		numberEntered = in.nextInt(); 
-		System.out.println ("___________________________________________");
 		
-		enterNumber (n) = in.nextInt(); 
-		enterNumber (n) = in.nextInt(); 
-		enterNumber (n) = in.nextInt(); 
-
-        //int difference = number - numberEntered;
+		 keepGuessing (numberEntered, number);
+		 
+		 System.out.println ("I'm thinking of a number between 1 and 100. Can you guess what it is?");
+        System.out.print ("Type a number: ");
+		numberEntered = in.nextInt(); 
 		
-		//System.out.println ("Your guess is: " + numberEntered );
-		//System.out.println ("The number I was thinking of is: " + number);
+		 boolean keepGoing = keepGuessing (numberEntered, number);
+		 
+		 if (keepGoing == false) {
+			  return;
+		 }
+		 
+		 System.out.println ("I'm thinking of a number between 1 and 100. Can you guess what it is?");
+        System.out.print ("Type a number: ");
+		numberEntered = in.nextInt(); 
+		
+		 keepGuessing (numberEntered, number);
+		
+		System.out.println ("The number I am thinking of is indeed " + number);
     }		 
     
-    public static enterNumber (int n) {
-			if (numberEntered > number) {
+    public static boolean keepGuessing (int numberEntered, int number) {
+		if (numberEntered > number) {
 			System.out.println ("TOO HIGH!!");
 			System.out.print ("Guess again:");
 			numberEntered = in.nextInt(); 
 		} else if (numberEntered < number) {
-			System.out.println ("TOO HIGH!!");	
+			System.out.println ("TOO LOW!!");	
 			System.out.print ("Guess again:");
 			numberEntered = in.nextInt(); 
 		} else {
 			System.out.println ("WOW.");
-		}
 	}
 }
