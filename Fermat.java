@@ -1,6 +1,6 @@
 public class Fermat {
 	public static void main (String[] args) {
-		int n = (int) (Math.random()*);
+		int n = (int) (Math.random()*4);
 		int a = (int) (Math.random()*100);
 		int b = (int) (Math.random()*100);
 		int c = (int) (Math.random()*100);
