@@ -7,43 +7,57 @@ public class GuessMyNumber {
         int number = random.nextInt(100) + 1;
         
         Scanner in = new Scanner (System. in);
-        int numberEntered = 0; //declare value first, then change later
+        int numberEntered;
        
        	System.out.println ("I'm thinking of a number between 1 and 100. Can you guess what it is?");
+       
+       //first guess
         System.out.print ("Type a number: ");
 		numberEntered = in.nextInt(); 
 		
-		 keepGuessing (numberEntered, number);
+		boolean keepGoing = keepGuessing (numberEntered, number);
 		 
-		 System.out.println ("I'm thinking of a number between 1 and 100. Can you guess what it is?");
-        System.out.print ("Type a number: ");
-		numberEntered = in.nextInt(); 
-		
-		 boolean keepGoing = keepGuessing (numberEntered, number);
-		 
-		 if (keepGoing == false) {
-			  return;
+		if (keepGoing == false) {
+			System.out.println ("The number I am thinking of is indeed" + number);
+			return;
 		 }
 		 
-		 System.out.println ("I'm thinking of a number between 1 and 100. Can you guess what it is?");
-        System.out.print ("Type a number: ");
+		//second guess
+		System.out.print ("Type another number: ");
 		numberEntered = in.nextInt(); 
 		
-		 keepGuessing (numberEntered, number);
+		keepGoing = keepGuessing (numberEntered, number);
+		 
+		if (keepGoing == false) {
+			System.out.println ("The number I am thinking of is indeed" + number);
+			return;
+		 }
+
+		//third guess
+		System.out.print ("Type another number: ");
+		numberEntered = in.nextInt(); 
 		
-		System.out.println ("The number I am thinking of is indeed " + number);
+		keepGoing = keepGuessing (numberEntered, number);
+		
+		if (keepGoing == false) {
+			System.out.println ("The number I am thinking of is indeed" + number);
+			return;
+		 }
+		
+		 System.out.println ("Uh oh, you ran out of guesses...");
+		 System.out.println ("The number I am thinking of is " + number);
     }		 
     
     public static boolean keepGuessing (int numberEntered, int number) {
 		if (numberEntered > number) {
 			System.out.println ("TOO HIGH!!");
-			System.out.print ("Guess again:");
-			numberEntered = in.nextInt(); 
+			return true;
 		} else if (numberEntered < number) {
 			System.out.println ("TOO LOW!!");	
-			System.out.print ("Guess again:");
-			numberEntered = in.nextInt(); 
+			return true;
 		} else {
 			System.out.println ("WOW.");
+			return false;
+		}
 	}
 }
